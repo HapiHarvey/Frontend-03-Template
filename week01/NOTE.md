@@ -145,12 +145,13 @@ string template:
 `undefined`属于全局变量；使用`void 0`产生undefined。
 
 ### Object
+
 传config的过程，并不是把对象当对象去传，把对象当作数据载体去传。
 由三个核心要素组成：state、indentifier、behovior。
 归类：研究单个对象，从里面提取共性，变成类。
 分类：以Object为基类，一级一级分类，从属关系；单继承。
 
-Javascriipt比较接近分类。
+Javascript比较接近分类。
 
 设计对象的状态和行为时，总是遵循“行为改变状态”的原则。
 保证对象的内聚性，对象的行为必须改变对象的状态。
