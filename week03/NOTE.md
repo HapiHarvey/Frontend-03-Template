@@ -1,4 +1,21 @@
-## 解析HTML，构建DOM树
+## 浏览器HTML解析和CSS计算作业
+
+已支持复合选择器，[作业路径](./html-parse)
+
+启动方式：
+
+``` sh
+
+# 进入目录
+npm install
+# 检查`.vscode`文件，直接按F5启动
+
+```
+
+
+## 笔记
+
+### 解析HTML，构建DOM树
 
 第一步
 
@@ -61,7 +78,7 @@ HTML语法可参考[HTML标准](html.spec.whatwg.org/multipage/)，共80个词�
 
 总结：应用状态机来解析字符串，做词法分析。在各个状态里编写业务逻辑，指的是`emit(token)`来构建DOM树）。在`emit(token)`里将三种闭合标签，文本标签构建成DOM树。
 
-## CSS Computing
+### CSS Computing
 
 第一步
 
