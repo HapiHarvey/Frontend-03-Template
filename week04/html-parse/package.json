@@ -1,0 +1,16 @@
+{
+  "name": "html-parse",
+  "version": "0.1.0",
+  "description": "",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "HapiHarvey <18826416280@163.com> (https://github.com/HapiHarvey)",
+  "license": "MIT",
+  "dependencies": {
+    "css": "^3.0.0",
+    "images": "^3.2.3"
+  }
+}
