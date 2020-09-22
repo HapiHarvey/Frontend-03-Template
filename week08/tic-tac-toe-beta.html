@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tic-tac-toe</title>
+</head>
+<style>
+    .cell {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        background-color: limegreen;
+        border: solid 1px white;
+        vertical-align: middle;
+
+        line-height: 100px;
+        font-size: 50px;
+        color: red;
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="board"></div>
+</body>
+<script>
+    let pattern = [
+        [0, 0, 2],
+        [0, 1, 0],
+        [0, 0, 0],
+    ]
+    let color = 1 // 当前下子方
+    const board = document.getElementById('board')
+
+    function show() {
+        board.innerHTML = ''
+        for (let i=0; i<3; i++) {
+            for (let j=0; j< 3; j++) {
+                let cell = document.createElement('div')
+                cell.classList.add('cell')
+                cell.innerHTML = 
+                    pattern[i][j] === 2 ? '❌' :
+                    pattern[i][j] === 1 ? '⭕️' : ''
+                cell.addEventListener('click', () => move(i, j))
+                board.appendChild(cell)
+            }
+            board.appendChild(document.createElement('br'))
+        }
+    }
+
+    function move(x, y) {
+        pattern[x][y] = color
+        show()
+        if (check(pattern, color)) {
+            alert(color === 2 ? '❌ is winner!' : '⭕️ is winner!')
+            return; // 游戏结束
+        }
+        color = 3 - color // 如果三个数值a,b,c构成三等分的结构，，那么 a=c-b b=c-a
+        if (willWin(pattern, color)) {
+            console.log(color === 2 ? '❌ will win!' : '⭕️ will win!')
+        }
+    }
+
+    function check(pattern, color) {
+        for (let i=0; i<3; i++) {
+            let win = true
+            for (let j=0; j<3; j++) {
+                if (pattern[i][j] !== color) { // 判断每行落子值与当前落子值
+                    win = false
+                }
+            }
+            if (win)
+                return true
+        }
+        for (let i=0; i<3; i++) {
+            let win = true
+            for (let j=0; j<3; j++) {
+                if (pattern[j][i] !== color) {
+                    win = false
+                }
+            }
+            if (win)
+                return true
+        }
+        { // 指定一个block，let声明的变量保存在这个词法作用域内
+            // 00 11 22 从左上到右下
+            let win = true
+            for (let i=0; i<3; i++) {
+                // if (pattern[2-i][2-i] !== color) {
+                //     win = false
+                // }
+                if (pattern[i][i] !== color) {
+                    win = false
+                }
+            }
+            if (win)
+                return true
+        }
+        {
+            // 02 11 20 从右上到左下
+            let win = true
+            for (let i=0; i<3; i++) {
+                if (pattern[i][2-i] !== color) {
+                    win = false
+                }
+            }
+            if (win)
+                return true
+        }
+
+        return false
+    }
+
+    function clone(pattern) {
+        return JSON.parse(JSON.stringify(pattern))
+    }
+
+    function willWin() {
+        for (let i=0; i<3; i++) {
+            for (let j=0; j<3; j++) {
+                if (pattern[i][j])
+                    continue;
+                
+                let tmp = clone(pattern)
+                tmp[i][j] = color
+                if (check(tmp, color)) {
+                    return [j, i]
+                }
+            }
+        }
+        return null
+    }
+
+    function bestChioce(pattern, color) {
+        let p
+        if (p === willWin(pattern, color)) {
+            return {
+                point: p,
+                result: 1
+            }
+        }
+        let result = -2;
+        let point = null;
+        for (let i=0; i<3; i++) {
+            for (let j=0; j<3; j++) {
+                if (pattern[i][j])
+                    continue;
+                let tmp = clone(pattern)
+                tmp[i][j] = color;
+                let r = bestChioce(tmp, 3 - color).result;
+
+                if (-r  > result) {
+                    result = -r;
+                    point = [j, i]
+                }
+            }
+        }
+        return {
+            point: point,
+            result: point ? result : 0
+        }
+    }
+
+    // main
+    show(pattern)
+    console.log(bestChioce(pattern, color));
+</script>
+</html>
