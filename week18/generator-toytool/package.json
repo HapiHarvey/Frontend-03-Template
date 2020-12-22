@@ -1,0 +1,17 @@
+{
+  "name": "generator-toytool",
+  "version": "0.1.0",
+  "description": "",
+  "main": "generators/app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HapiHarvey <18826416280@163.com> (https://github.com/HapiHarvey)",
+  "license": "MIT",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^1.1.1"
+  }
+}

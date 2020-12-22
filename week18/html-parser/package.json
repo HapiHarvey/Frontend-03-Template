@@ -1,0 +1,19 @@
+{
+  "name": "html-parser",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -require @babel/register",
+    "coverage": "nyc mocha"
+  },
+  "author": "HapiHarvey <18826416280@163.com> (https://github.com/HapiHarvey)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/register": "^7.12.1",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0"
+  }  
+}
