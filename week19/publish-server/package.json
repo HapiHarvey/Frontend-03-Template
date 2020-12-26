@@ -1,0 +1,16 @@
+{
+  "name": "publish-server",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server.js",
+    "publish": "scp -r -P 22 ./* root@81.68.241.91:/root/publish-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HapiHarvey <18826416280@163.com> (https://github.com/HapiHarvey)",
+  "license": "MIT",
+  "dependencies": {
+    "unzipper": "^0.10.11"
+  }
+}
